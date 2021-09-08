@@ -7,6 +7,7 @@ const productos = require('./rutas/productos.route');
 const handlebars = require('express-handlebars');
 const io = require('socket.io')(http);
 const fs = require('fs');
+const router = express.Router();
 const mensajes = [];
 
 http.listen(8080, () =>{
@@ -79,3 +80,18 @@ io.on('connection', async (socket)=>{
         }
     })
 })
+
+function error404(req, res, next){
+    let error = new Error(),
+        locals = {
+            title: 'Error 404',
+            description: 'Recurso no encontrado',
+            error: error
+        }
+
+    error.status = 404;
+    res.render('error', locals);
+    //next();
+}
+app.use(error404);
+module.exports = router;
