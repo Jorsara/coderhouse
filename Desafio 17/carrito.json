@@ -1,0 +1,28 @@
+[
+	{
+		"id": 1,
+		"timestamp": "09/05/2021 18:03:38",
+		"productos": [
+			{
+				"timestamp": "09/05/2021 18:03:38",
+				"title": "Gorro",
+				"descripcion": "Lorem ipsum",
+				"codigo": "23",
+				"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/graduation-square-academic-cap-school-128.png",
+				"price": 400,
+				"stock": 3,
+				"id": 1
+			},
+			{
+				"timestamp": "09/05/2021 18:06:38",
+				"title": "Reloj",
+				"descripcion": "Lorem ipsum",
+				"codigo": "23",
+				"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+				"price": 830,
+				"stock": 3,
+				"id": 2
+			}
+		]
+	}
+]
