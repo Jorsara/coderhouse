@@ -17,17 +17,23 @@
               <h4>Cantidad de productos: {{productos.cantidad}}</h4>
               <table class="table">
                 <thead>
-                  <tr>                  
+                  <tr>   
+                    <th scope="col">Código</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>             
                     <th scope="col">Imágen</th>
                   </tr>
                 </thead>
                 <tbody>
                   {{#each productos.items}}
                       <tr>
+                        <td>{{this.codigo}}</td>
                         <td>{{this.title}}</td>
+                        <td>{{this.descripcion}}</td>
                         <td>{{this.price}}</td>
+                        <td>{{this.stock}}</td>
                         <td><img src="{{this.thumbnail}}" /></td>
                       </tr>
                   {{/each}}                
