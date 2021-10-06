@@ -1,0 +1,67 @@
+[
+   {
+     "_id": "615de4cd3199e7c847dc2de2",
+     "author": {
+       "id": "carlos@gmail.com",
+       "nombre": "Carlos",
+       "apellido": "Perez",
+       "edad": "23",
+       "alias": "Carlitos",
+       "avatar": "URL"
+     },
+     "text": "Hola",
+     "__v": 0
+   },
+   {
+     "_id": "615de4da3199e7c847dc2de6",
+     "author": {
+       "id": "carlos@gmail.com",
+       "nombre": "Carlos",
+       "apellido": "Perez",
+       "edad": "23",
+       "alias": "Carlitos",
+       "avatar": "URL"
+     },
+     "text": "Hola",
+     "__v": 0
+   },
+   {
+     "_id": "615de4f63199e7c847dc2dea",
+     "author": {
+       "id": "carlos@gmail.com",
+       "nombre": "Carlos",
+       "apellido": "Perez",
+       "edad": "23",
+       "alias": "Carlitos",
+       "avatar": "URL"
+     },
+     "text": "Hola",
+     "__v": 0
+   },
+   {
+     "_id": "615de5504690354781a10a3d",
+     "author": {
+       "id": "Juan@gmail.com",
+       "nombre": "Juan",
+       "apellido": "Rodriguez",
+       "edad": "23",
+       "alias": "Juan",
+       "avatar": "URL"
+     },
+     "text": "Hola",
+     "__v": 0
+   },
+   {
+     "_id": "615de5524690354781a10a41",
+     "author": {
+       "id": "Juan@gmail.com",
+       "nombre": "Juan",
+       "apellido": "Rodriguez",
+       "edad": "23",
+       "alias": "Juan",
+       "avatar": "URL"
+     },
+     "text": "Hola",
+     "__v": 0
+   }
+ ]

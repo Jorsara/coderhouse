@@ -76,7 +76,7 @@ io.on('connection', async (socket)=>{
     let mensajes = await Mensaje2.find().lean();
     
     //socket.emit('mensaje-inicial',{mensajes})
-    //console.log(mensajes);
+    console.log(JSON.stringify(mensajes));
     const normalizedData = normalize(mensajes, chatSchema);
     console.log(JSON.stringify(normalizedData));
 
