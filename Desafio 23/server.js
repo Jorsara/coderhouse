@@ -79,9 +79,12 @@ io.on('connection', async (socket)=>{
     //console.log(JSON.stringify(mensajes));
     const normalizedData = normalize(mensajes, Array.of(chatSchema))
     //console.log(JSON.stringify(normalizedData));
-    const denormalizedData = denormalize(normalizedData, Array.of(chatSchema), normalizedData.entities);
+    //const denormalizedData = denormalize(normalizedData, Array.of(chatSchema), normalizedData.entities);
     //console.log(JSON.stringify(denormalizedData));
-    socket.emit('mensaje-inicial',{normalizedData})
+    const sizeO = Buffer.byteLength(JSON.stringify(mensajes));
+    const sizeN = Buffer.byteLength(JSON.stringify(normalizedData));
+    const comp = parseFloat(sizeN * 100 / sizeO - 100).toFixed(2);
+    socket.emit('mensaje-inicial',{normalizedData, comp})
 
     // Recibo el mensaje del usuario
     socket.on('mensaje-nuevo', async(data)=>{        

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mensajes = [];
 
     socket.on("mensaje-inicial", (data) => {
+        $('#comp').html(data.comp);
         let mensajesE = Object.values(data.normalizedData.entities.chat);
         console.log(mensajesE);
         mensajes = mensajes.concat(mensajesE); 
