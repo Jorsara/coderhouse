@@ -16,7 +16,7 @@ const { Producto } = require('./schemas/productos');
 const { Mensaje2 } = require('./schemas/mensajes');
 const {persistencia} = require('./peristencia');
 const bodyParser = require('body-parser');
-const {normalize,schema} = require('normalizr');
+const {normalize,schema, denormalize} = require('normalizr');
 const { Mongoose } = require('mongoose');
 app.use(bodyParser());
 database.connect();
@@ -48,9 +48,9 @@ app.use('/productos', productos);
 const author = new schema.Entity('authors');
 const text = new schema.Entity('texts');
 const chatSchema = new schema.Entity('chat',{
-   authors: [author],
-   text
-});
+    author: author,
+    text
+ }, { idAttribute: '_id' });
 
 // Websocket
 io.on('connection', async (socket)=>{
@@ -76,15 +76,26 @@ io.on('connection', async (socket)=>{
     let mensajes = await Mensaje2.find().lean();
     
     //socket.emit('mensaje-inicial',{mensajes})
-    console.log(JSON.stringify(mensajes));
-    const normalizedData = normalize(mensajes, chatSchema);
-    console.log(JSON.stringify(normalizedData));
+    //console.log(JSON.stringify(mensajes));
+    const normalizedData = normalize(mensajes, Array.of(chatSchema))
+    //console.log(JSON.stringify(normalizedData));
+    const denormalizedData = denormalize(normalizedData, Array.of(chatSchema), normalizedData.entities);
+    //console.log(JSON.stringify(denormalizedData));
+    socket.emit('mensaje-inicial',{normalizedData})
 
     // Recibo el mensaje del usuario
     socket.on('mensaje-nuevo', async(data)=>{        
         io.emit("actualizar-chat",{message:data,clientId:socket.id});
         try{
-            const mensajeNuevo = new Mensaje({message:data,clientId:socket.id});
+            //console.log(data);
+            const mensajeNuevo = new Mensaje2({text:data.text, author:{
+                id: data.author,
+                nombre:"Juan",
+                apellido:"Rodriguez",
+                edad:"23",
+                alias:"Juan",
+                avatar:"URL"
+            }});
             await mensajeNuevo.save().then(e=>console.log(e));                   
         }
         catch (err) {

@@ -5,16 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const msj = document.querySelector("#mensaje");
     const email = document.querySelector('#email');
     const envio = document.querySelector('#enviar-msg');
-    const mensajes = [];
+    let mensajes = [];
 
     socket.on("mensaje-inicial", (data) => {
-        mensajes.push(data.mensajes);    
+        let mensajesE = Object.values(data.normalizedData.entities.chat);
+        console.log(mensajesE);
+        mensajes = mensajes.concat(mensajesE); 
+        console.log(mensajes);  
         $('#chat').html('');    
-        data.mensajes.forEach(e =>{
+        mensajes.forEach(e =>{
             $('#chat').append(
                 `<div class="mensaje">
-                    <p class="mensaje-datos"><span class="mensaje-email">${e.message.email}</span> <span class="mensaje-fecha">${e.message.dateStr}</span></p>
-                    <p class="mensaje-texto">${e.message.value}</p>
+                    <p class="mensaje-datos"><span class="mensaje-email">${e.text}</span></p>
+                    <p class="mensaje-texto">${e.author}</p>
                 </div>`
             );
         });                    
@@ -22,15 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Recibo el mensajo del servidor y lo renderizo
     socket.on("actualizar-chat", (data) => {       
-        console.log(data);         
-        mensajes[0].push(data);    
+        //console.log(data);
+        let msgNuevo = {
+            _id: data.clientId,
+            author: data.message.author,
+            text: data.message.text            
+        }         
+        mensajes.push(msgNuevo);    
         $('#chat').html('');    
-        console.log(mensajes);
-        mensajes[0].forEach(e =>{
+        //console.log(mensajes);
+        mensajes.forEach(e =>{
             $('#chat').append(
                 `<div class="mensaje">
-                    <p class="mensaje-datos"><span class="mensaje-email">${e.message.email}</span> <span class="mensaje-fecha">${e.message.dateStr}</span></p>
-                    <p class="mensaje-texto">${e.message.value}</p>
+                    <p class="mensaje-datos"><span class="mensaje-email">${e.author}</span></p>
+                    <p class="mensaje-texto">${e.text}</p>
                 </div>`
             );
         });   
@@ -51,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (email.value == '') {
             $(email).addClass('required');
         }else{
-            socket.emit("mensaje-nuevo", { value: msj.value, email: email.value, dateStr });
+            socket.emit("mensaje-nuevo", { text: msj.value, author: email.value });
             msj.value = "";
         }
     });
