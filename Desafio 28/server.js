@@ -28,6 +28,7 @@ const advancedOptions = { userNewUrlParser: true, useUnifiedTopology: true };
 const LocalStrategy = require('passport-local').Strategy;
 const passport = require('passport');
 const { fork } = require('child_process');
+const { Usuario } = require('./schemas/usuario');
 database.connect();
 
 app.use(session({
@@ -68,26 +69,55 @@ app.use('/carrito', carrito);
 app.use('/productos', productos);
 app.use('/user', user);
 
-app.get('/info',(req,res)=>{
-    let info = {
-        argumentos: req.query,
-        plataforma: process.platform,
-        versionNode: process.version,
-        usoMemoria: process.memoryUsage(),
-        pathDeEjecucion: process.cwd(),
-        proccesId: process.pid,
-        carpetaCorriente: process.argv[0]
+app.get('/info',async(req,res)=>{
+    try{
+        let username = process.argv[3];
+        let password = process.argv[4]
+        let usuarios = await Usuario.find();
+        let user = usuarios.find(usuario => usuario.username == username);
+        let success = user.username == username && user.password == password;
+        if (!success){
+            res.send('El usuario no es valido.')
+        }else{
+            console.log('El usuario es valido.');
+            let info = {
+                argumentos: req.query,
+                plataforma: process.platform,
+                versionNode: process.version,
+                usoMemoria: process.memoryUsage(),
+                pathDeEjecucion: process.cwd(),
+                proccesId: process.pid,
+                carpetaCorriente: process.argv[0]
+            }
+            res.send(info);
+        }          
     }
-    res.send(info);
+    catch (err) {
+        console.log(err);
+    }       
 })
-app.get('/randoms',(req,res)=>{
-    let cant = req.query.cant - 1 || 100000000;
-    const computo = fork('./randoms.js', [cant])
-    computo.send('start')
-    computo.on('message', numeros => {
-        res.send(numeros)
-    })
-    //res.send(numeros);
+app.get('/randoms',async(req,res)=>{
+    try{
+        let username = process.argv[3];
+        let password = process.argv[4]
+        let usuarios = await Usuario.find();
+        let user = usuarios.find(usuario => usuario.username == username);
+        let success = user.username == username && user.password == password;
+        if (!success){
+            res.send('El usuario no es valido.')
+        }else{
+            console.log('El usuario es valido.');
+            let cant = req.query.cant - 1 || 100000000;
+            const computo = fork('./randoms.js', [cant])
+            computo.send('start')
+            computo.on('message', numeros => {
+                res.send(numeros)
+            });
+        }          
+    }
+    catch (err) {
+        console.log(err);
+    }       
 })
 
 const author = new schema.Entity('authors');
