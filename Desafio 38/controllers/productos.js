@@ -3,6 +3,7 @@ const { Producto } = require('../schemas/productos');
 const { logger } = require('../logs/logConfig');
 var { graphqlHTTP }  = require('express-graphql');
 var { buildSchema } = require('graphql');
+//const fetch = require("node-fetch");
 
 /* Graphql */
 // GraphQL schema
@@ -33,7 +34,7 @@ const listarProductos = async () => {
     logger.error(err);
   }
 };
-const agregarProducto = async ( req, res, next ) => {       
+const agregarProducto = async ( req, res, next ) => {    
   const { title, descripcion, price, thumbnail, codigo, stock } = req.body;
 
   if (!title || !descripcion || !price || !thumbnail || !codigo || !stock){
@@ -81,7 +82,20 @@ const vista = async ( req, res, next ) => {
   }    
 }; 
 
-const listar = async ( req, res, next ) => {   
+const listar = async ( req, res, next ) => {     
+  fetch('/productos/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+      variables: { title },
+    })
+  })
+  .then(r => r.json())
+  .then(data => console.log('data returned:', data));
   try{
     let json = await Producto.find();
     if(json.length > 0){

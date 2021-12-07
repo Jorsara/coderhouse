@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const isAdmin = require('../middleware/isAdmin');
 
-const { listar, vista, listarId, agregar, actualizar, borrar, buscarNombre, buscarCodigo, buscarPrecio, buscarStock, graphql } = require('../controllers/productos');
+const { listar, vista, listarId, agregar, actualizar, borrar, buscarNombre, buscarCodigo, buscarPrecio, buscarStock, graphql } = require('../controllers/productos.js');
 // Grahpql
 router.use('/graphql', graphql);
 
