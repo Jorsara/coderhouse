@@ -45,9 +45,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">            
-            {{#if productos.items}}
-              <h4>Cantidad de productos: {{productos.cantidad}}</h4>
-              <table class="table">
+              <table class="table" id="tabla-graphql">
                 <thead>
                   <tr>   
                     <th scope="col">Código</th>
@@ -59,21 +57,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {{#each productos.items}}
-                      <tr>
-                        <td>{{this.codigo}}</td>
-                        <td>{{this.title}}</td>
-                        <td>{{this.descripcion}}</td>
-                        <td>{{this.price}}</td>
-                        <td>{{this.stock}}</td>
-                        <td><img src="{{this.thumbnail}}" /></td>
-                      </tr>
-                  {{/each}}                
+                            
                 </tbody>
               </table>            
-              {{else}}
-                <h2 class="text-center">No hay productos.</h2>
-            {{/if}}
           </div>
         </div>
       </div>
@@ -83,5 +69,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script-- src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!--script src="../../assets/js/script.js"></script-->
+    <script>
+      fetch('/productos/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ query: "{ productos {codigo, title, descripcion, price, stock, thumbnail} }" })
+        })
+        .then(r => r.json())
+        .then(data => {
+          console.log(data)
+          data.data.productos.forEach(e =>{
+              $('#tabla-graphql tbody').append(
+                  `<tr>
+                      <td>${e.codigo}</td>
+                      <td>${e.title}</td>
+                      <td>${e.descripcion}</td>
+                      <td>${e.price}</td>
+                      <td>${e.stock}</td>                
+                      <td><img src="${e.thumbnail}" /></td>
+                  </tr>`
+              );
+          });  
+        })
+        .catch(console.error)
+  </script>
   </body>
 </html>

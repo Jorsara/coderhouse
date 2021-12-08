@@ -83,19 +83,6 @@ const vista = async ( req, res, next ) => {
 }; 
 
 const listar = async ( req, res, next ) => {     
-  fetch('/productos/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({
-      query,
-      variables: { title },
-    })
-  })
-  .then(r => r.json())
-  .then(data => console.log('data returned:', data));
   try{
     let json = await Producto.find();
     if(json.length > 0){
