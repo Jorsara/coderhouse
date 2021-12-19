@@ -1,0 +1,19 @@
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"1\"","value":"1","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"¿\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"¿\"","value":"¿","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"}\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"}\"","value":"}","valueType":"string"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"test"}
+{"level":"error"}
+{"level":"error"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"1\"","value":"1","valueType":"string"}
+{"level":"error"}
+{"level":"error"}
