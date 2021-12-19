@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --quiet server.js 8080 test 1234 FORK",
-    "start cluster": "nodemon --quiet server.js 8080 test 1234 CLUSTER",
+    "start": "set NODE_ENV=production&& node server.js",
+    "watch": "set NODE_ENV=development&& nodemon --quiet server.js",
     "dev" : "set NODE_ENV=development&& nodemon --quiet server.js",
     "prod" : "set NODE_ENV=production&& nodemon --quiet server.js"
   },

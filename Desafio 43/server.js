@@ -26,7 +26,6 @@ const { logger } = require('./logs/logConfig');
 let {PORT} = require('yargs').argv;
 const config = require('./config.js');
 console.log({config});
-console.log(PORT);
 
 database.connect();
 
