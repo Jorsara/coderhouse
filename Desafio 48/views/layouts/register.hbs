@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Coder House</title>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+  </head>
+  <body> 
+
+    <section class="mt-4 mb-4 login-cont">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <h2>Registro</h2>
+              <form id="login" method="POST" action="/register">
+                <input type="text" name="nombre" class="form-control mb-3" id="nombre" placeholder="Nombre" />
+                <input type="text" name="telefono" class="form-control mb-3" id="telefono" placeholder="Teléfono" />
+                <input type="text" name="username" class="form-control mb-3" id="username" placeholder="Email" />
+                <input type="password" name="password" class="form-control mb-3" id="password" placeholder="Contraseña" />
+                <input type="password2" name="password2" class="form-control mb-3" id="password2" placeholder="Verificar Contraseña" />
+                <p id="pw-check" style="display: none;">Las contraseñas no coinciden.</p>
+                <input type="submit" class="btn btn-primary" value="Registrar" />
+              </form>               
+              <a href="/login" class="btn btn-primary mt-4">Ir a login</a>
+            </div>
+        </div>
+      </div>
+    </section> 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../../assets/js/login.js"></script>
+    <script>
+      $("#login").on("submit", function (e) {
+        let pw1 = $('#password').val();
+        let pw2 = $('#password2').val();
+        if(pw1 !== pw2){
+            $('#pw-check').show();
+            e.preventDefault();
+            return false;
+        }else{
+            return true;
+        }
+      });
+    </script>
+  </body>
+</html>

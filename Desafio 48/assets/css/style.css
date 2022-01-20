@@ -1,0 +1,50 @@
+/* General */
+body{
+    padding:0px;
+}
+/* General */
+/* Productos */
+.filtrosBusqueda form{
+    margin-bottom:25px;
+}
+#tabla-productos{
+    display:none;
+}
+#sin-productos{
+    display:none;
+}
+#tabla-productos.activar, #sin-productos.activar{
+    display:block;
+}
+/* Productos */
+/* Chat */
+#msg-form .col-lg-2 {
+    align-items: flex-end;
+    display: flex;
+}
+span.mensaje-email {
+    font-weight: bold;
+    color: blue;
+}
+span.mensaje-fecha {
+    color: brown;
+}
+p.mensaje-texto {
+    font-style: italic;
+    color: green;
+}
+p.mensaje-datos {
+    margin: 0;
+}
+.mensaje-texto {
+    margin-bottom: 10px;
+}
+.mensaje {
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+#email.required {
+    border-color: red;
+}
+/* Chat */
+#pw-check{display:none;}

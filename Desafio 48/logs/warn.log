@@ -1,0 +1,36 @@
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"1\"","value":"1","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"¿\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"¿\"","value":"¿","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"}\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"}\"","value":"}","valueType":"string"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"test"}
+{"level":"error"}
+{"level":"error"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"1\"","value":"1","valueType":"string"}
+{"level":"error"}
+{"level":"error"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"33\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"33\"","value":"33","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"61a3aa64c10c62970b5b695ds\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"61a3aa64c10c62970b5b695ds\"","value":"61a3aa64c10c62970b5b695ds","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"123\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"123\"","value":"123","valueType":"string"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"61a3aa64c10c62970b5b695d12\" (type string) at path \"_id\" for model \"Producto\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"61a3aa64c10c62970b5b695d12\"","value":"61a3aa64c10c62970b5b695d12","valueType":"string"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
